@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MLDoctor Report</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+            margin:40px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            margin-bottom:20px;
+            box-shadow:0px 2px 8px rgba(0,0,0,0.15);
+        }
+
+        h1{
+            color:#2c3e50;
+        }
+
+        pre{
+            white-space:pre-wrap;
+            font-size:14px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>🩺 MLDoctor Dataset Report</h1>
+
+<div class="card">
+<h2>Dataset Shape</h2>
+<p>
+Rows : {{ report["shape"][0] }}<br>
+Columns : {{ report["shape"][1] }}
+</p>
+</div>
+
+<div class="card">
+<h2>Missing Values</h2>
+<pre>{{ report["missing"] }}</pre>
+</div>
+
+<div class="card">
+<h2>Duplicates</h2>
+<pre>{{ report["duplicates"] }}</pre>
+</div>
+
+<div class="card">
+<h2>Datatypes</h2>
+<pre>{{ report["datatypes"] }}</pre>
+</div>
+
+<div class="card">
+<h2>Correlation</h2>
+<pre>{{ report["correlation"] }}</pre>
+</div>
+
+<div class="card">
+<h2>Outliers</h2>
+<pre>{{ report["outliers"] }}</pre>
+</div>
+
+<div class="card">
+<h2>Recommendations</h2>
+
+<ul>
+{% for item in report["recommendations"] %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+</body>
+</html>

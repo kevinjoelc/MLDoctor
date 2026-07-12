@@ -15,8 +15,8 @@ dist/
 report.json
 report.html
 
-# macOS
-.DS_Store
-
 # VS Code
 .vscode/
+
+# macOS
+.DS_Store
