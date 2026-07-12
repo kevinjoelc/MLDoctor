@@ -1,0 +1,231 @@
+{
+    "shape": [
+        1944,
+        13
+    ],
+    "missing": {
+        "total_missing": 0,
+        "columns_missing": {},
+        "missing_percentage": {}
+    },
+    "duplicates": {
+        "duplicates": 0,
+        "duplicate_rows": []
+    },
+    "datatypes": {
+        "datatypes": {
+            "CustomerId": "int64",
+            "Surname": "str",
+            "CreditScore": "int64",
+            "Geography": "str",
+            "Gender": "str",
+            "Age": "int64",
+            "Tenure": "int64",
+            "Balance": "float64",
+            "NumOfProduct": "int64",
+            "HasCrCard": "int64",
+            "IsActiveMember": "int64",
+            "EstimatedSalary": "float64",
+            "Exited": "int64"
+        },
+        "numeric_columns": [
+            "CustomerId",
+            "CreditScore",
+            "Age",
+            "Tenure",
+            "Balance",
+            "NumOfProduct",
+            "HasCrCard",
+            "IsActiveMember",
+            "EstimatedSalary",
+            "Exited"
+        ],
+        "categorical_columns": [
+            "Surname",
+            "Geography",
+            "Gender"
+        ]
+    },
+    "correlation": {
+        "high_correlation_pairs": [],
+        "correlation_matrix": {
+            "CustomerId": {
+                "CustomerId": 1.0,
+                "CreditScore": 0.011,
+                "Age": 0.014,
+                "Tenure": -0.009,
+                "Balance": -0.013,
+                "NumOfProduct": -0.004,
+                "HasCrCard": -0.049,
+                "IsActiveMember": 0.036,
+                "EstimatedSalary": 0.008,
+                "Exited": -0.016
+            },
+            "CreditScore": {
+                "CustomerId": 0.011,
+                "CreditScore": 1.0,
+                "Age": -0.02,
+                "Tenure": -0.001,
+                "Balance": 0.017,
+                "NumOfProduct": -0.019,
+                "HasCrCard": -0.021,
+                "IsActiveMember": 0.044,
+                "EstimatedSalary": -0.021,
+                "Exited": -0.033
+            },
+            "Age": {
+                "CustomerId": 0.014,
+                "CreditScore": -0.02,
+                "Age": 1.0,
+                "Tenure": -0.021,
+                "Balance": 0.016,
+                "NumOfProduct": -0.051,
+                "HasCrCard": -0.021,
+                "IsActiveMember": 0.046,
+                "EstimatedSalary": 0.003,
+                "Exited": 0.361
+            },
+            "Tenure": {
+                "CustomerId": -0.009,
+                "CreditScore": -0.001,
+                "Age": -0.021,
+                "Tenure": 1.0,
+                "Balance": -0.023,
+                "NumOfProduct": 0.053,
+                "HasCrCard": 0.018,
+                "IsActiveMember": -0.051,
+                "EstimatedSalary": 0.04,
+                "Exited": -0.019
+            },
+            "Balance": {
+                "CustomerId": -0.013,
+                "CreditScore": 0.017,
+                "Age": 0.016,
+                "Tenure": -0.023,
+                "Balance": 1.0,
+                "NumOfProduct": -0.158,
+                "HasCrCard": -0.024,
+                "IsActiveMember": -0.036,
+                "EstimatedSalary": -0.016,
+                "Exited": 0.127
+            },
+            "NumOfProduct": {
+                "CustomerId": -0.004,
+                "CreditScore": -0.019,
+                "Age": -0.051,
+                "Tenure": 0.053,
+                "Balance": -0.158,
+                "NumOfProduct": 1.0,
+                "HasCrCard": -0.003,
+                "IsActiveMember": 0.041,
+                "EstimatedSalary": 0.041,
+                "Exited": -0.069
+            },
+            "HasCrCard": {
+                "CustomerId": -0.049,
+                "CreditScore": -0.021,
+                "Age": -0.021,
+                "Tenure": 0.018,
+                "Balance": -0.024,
+                "NumOfProduct": -0.003,
+                "HasCrCard": 1.0,
+                "IsActiveMember": -0.036,
+                "EstimatedSalary": -0.078,
+                "Exited": -0.008
+            },
+            "IsActiveMember": {
+                "CustomerId": 0.036,
+                "CreditScore": 0.044,
+                "Age": 0.046,
+                "Tenure": -0.051,
+                "Balance": -0.036,
+                "NumOfProduct": 0.041,
+                "HasCrCard": -0.036,
+                "IsActiveMember": 1.0,
+                "EstimatedSalary": 0.01,
+                "Exited": -0.213
+            },
+            "EstimatedSalary": {
+                "CustomerId": 0.008,
+                "CreditScore": -0.021,
+                "Age": 0.003,
+                "Tenure": 0.04,
+                "Balance": -0.016,
+                "NumOfProduct": 0.041,
+                "HasCrCard": -0.078,
+                "IsActiveMember": 0.01,
+                "EstimatedSalary": 1.0,
+                "Exited": 0.013
+            },
+            "Exited": {
+                "CustomerId": -0.016,
+                "CreditScore": -0.033,
+                "Age": 0.361,
+                "Tenure": -0.019,
+                "Balance": 0.127,
+                "NumOfProduct": -0.069,
+                "HasCrCard": -0.008,
+                "IsActiveMember": -0.213,
+                "EstimatedSalary": 0.013,
+                "Exited": 1.0
+            }
+        }
+    },
+    "outliers": {
+        "CustomerId": {
+            "outliers": 0,
+            "lower_limit": 15442407.0,
+            "upper_limit": 15937307.0
+        },
+        "CreditScore": {
+            "outliers": 7,
+            "lower_limit": 368.5,
+            "upper_limit": 932.5
+        },
+        "Age": {
+            "outliers": 23,
+            "lower_limit": 13.0,
+            "upper_limit": 69.0
+        },
+        "Tenure": {
+            "outliers": 0,
+            "lower_limit": -4.5,
+            "upper_limit": 15.5
+        },
+        "Balance": {
+            "outliers": 0,
+            "lower_limit": -193889.28,
+            "upper_limit": 323148.79
+        },
+        "NumOfProduct": {
+            "outliers": 30,
+            "lower_limit": -0.5,
+            "upper_limit": 3.5
+        },
+        "HasCrCard": {
+            "outliers": 0,
+            "lower_limit": -1.5,
+            "upper_limit": 2.5
+        },
+        "IsActiveMember": {
+            "outliers": 0,
+            "lower_limit": -1.5,
+            "upper_limit": 2.5
+        },
+        "EstimatedSalary": {
+            "outliers": 0,
+            "lower_limit": -95650.19,
+            "upper_limit": 293864.84
+        },
+        "Exited": {
+            "outliers": 0,
+            "lower_limit": -1.5,
+            "upper_limit": 2.5
+        }
+    },
+    "recommendations": [
+        "CreditScore contains 7 outliers.",
+        "Age contains 23 outliers.",
+        "NumOfProduct contains 30 outliers."
+    ]
+}

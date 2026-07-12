@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: mldoctor
+Version: 0.1.0
+Summary: Automated dataset health analysis and preprocessing recommendations.
+Author-email: Kevin Joel <kevinjoel7.c@gmail.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE 
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Dynamic: license-file
