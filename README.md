@@ -13,9 +13,10 @@ MLDoctor is an intelligent web application that analyzes CSV datasets and provid
 ---
 
 # ✨ Features
-<img width="1470" height="834" alt="dh2" src="https://github.com/user-attachments/assets/d2408ae6-013b-4356-9b63-0516c5b3206d" />
 
 ## 📊 Dataset Health Analysis
+<img width="1470" height="834" alt="dh2" src="https://github.com/user-attachments/assets/d2408ae6-013b-4356-9b63-0516c5b3206d" />
+
 - Total rows and columns
 - Dataset health score
 - Missing value detection
