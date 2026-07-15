@@ -1,0 +1,627 @@
+/*==================================================
+ MLDoctor Professional Dashboard Theme
+==================================================*/
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- App ---------- */
+
+html, body, [class*="css"]{
+    font-family:'Inter',sans-serif;
+}
+
+.stApp{
+    background:#000000;
+    color:#1E293B;
+}
+
+/* ---------- Main Container ---------- */
+
+.block-container{
+    padding-top:2rem;
+    padding-left:2rem;
+    padding-right:2rem;
+    max-width:1450px;
+}
+
+/*==================================================
+ SIDEBAR
+==================================================*/
+
+section[data-testid="stSidebar"]{
+    background:#00000087;
+    border-right:1px solid rgba(255,255,255,.08);
+}
+
+section[data-testid="stSidebar"] *{
+    color:white;
+}
+
+section[data-testid="stSidebar"] img{
+    display:block;
+    margin:auto;
+}
+
+section[data-testid="stSidebar"] hr{
+    border:1px solid rgba(255,255,255,.08);
+}
+
+
+/*==================================================
+ TITLES
+==================================================*/
+
+h1{
+    color:#ffffff !important;
+    font-size:42px;
+    font-weight:700;
+}
+
+h2{
+    color:#ffffff !important;
+    font-weight:700;
+}
+
+h3{
+    color:#334155 !important;
+}
+
+p{
+    color:#64748B;
+}
+
+/*==================================================
+ HERO
+==================================================*/
+
+.hero{
+
+    background:linear-gradient(
+    135deg,
+    #2563EB,
+    #1D4ED8
+    );
+
+    border-radius:22px;
+
+    padding:40px;
+
+    color:white;
+
+    margin-bottom:30px;
+
+    box-shadow:0 15px 40px rgba(37,99,235,.25);
+
+}
+
+.hero h1{
+
+    color:white!important;
+
+    font-size:46px;
+
+}
+
+.hero p{
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+.feature-grid{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:50px;
+
+    line-height:2;
+
+}
+
+/*==================================================
+ DASHBOARD CARDS
+==================================================*/
+
+.feature-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    height:330px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:14px;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
+
+    transition:.25s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(15,23,42,.15);
+
+}
+
+.feature-card .icon{
+
+    font-size:48px;
+
+    line-height:1;
+
+}
+
+.feature-card h3{
+
+    margin:0;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#2563EB;
+
+}
+
+.feature-card p{
+
+    margin:0;
+
+    font-size:46px;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+.feature-card span{
+
+    display:inline-block;
+
+    margin-top:5px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+/* Number Colors */
+
+.green p{color:#16A34A;}
+.blue p{color:#2563EB;}
+.orange p{color:#EA580C;}
+.purple p{color:#7C3AED;}
+/*==================================================
+ INFORMATION CARDS
+==================================================*/
+
+.info-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:28px;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.08);
+
+    margin-bottom:25px;
+
+    line-height:1.9;
+
+    transition:.25s;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.info-card h2{
+
+    margin-bottom:20px;
+
+}
+
+/*==================================================
+ WORKFLOW
+==================================================*/
+
+.workflow-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    height:180px;
+
+    text-align:center;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.08);
+
+    transition:.25s;
+
+}
+
+.workflow-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.workflow-card h2{
+
+    color:#2563EB;
+
+}
+
+.workflow-card p{
+
+    color:#64748B;
+
+}
+
+/*==================================================
+ METRICS
+==================================================*/
+
+[data-testid="metric-container"]{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.08);
+
+}
+
+/*==================================================
+ TABLES
+==================================================*/
+
+[data-testid="stDataFrame"]{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:1px solid #E5E7EB;
+
+}
+
+thead tr{
+
+    background:#2563EB;
+
+}
+
+thead th{
+
+    color:white!important;
+
+}
+
+tbody tr:nth-child(even){
+
+    background:#F8FAFC;
+
+}
+
+/*==================================================
+ BUTTONS
+==================================================*/
+
+.stButton>button{
+
+    background:#2563EB;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    height:45px;
+
+    width:100%;
+
+    font-weight:600;
+
+}
+
+.stButton>button:hover{
+
+    background:#1D4ED8;
+
+}
+
+/*==================================================
+ FILE UPLOADER
+==================================================*/
+
+[data-testid="stFileUploader"]{
+
+    background:rgb(0, 0, 0);
+
+    border-radius:18px;
+
+    border:1px solid #E5E7EB;
+
+    padding:18px;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.08);
+
+}
+
+/*==================================================
+ ALERTS
+==================================================*/
+
+.stAlert{
+
+    border-radius:15px;
+
+}
+
+/*==================================================
+ DIVIDER
+==================================================*/
+
+hr{
+
+    border:1px solid #E5E7EB;
+
+}
+
+/*==================================================
+ PLOTLY
+==================================================*/
+
+.js-plotly-plot{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:10px;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.08);
+
+}
+
+/* =====================================
+   Section Card
+===================================== */
+
+.section-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:18px 25px;
+
+    margin-bottom:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    border:1px solid #E5E7EB;
+
+}
+
+.section-card h2{
+
+    margin:0;
+
+    color:#1E293B;
+
+}
+
+.section-card p{
+
+    margin-top:6px;
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+ Dashboard Card
+=========================== */
+
+.dashboard-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
+
+    border:1px solid #E5E7EB;
+
+    height:100%;
+
+}
+
+.metric-card{
+    background:#ffffff;
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    border:1px solid #E5E7EB;
+    transition:.3s;
+}
+
+.metric-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 35px rgba(0,0,0,.12);
+}
+
+.metric-card h4{
+    color:#64748B;
+    margin:0;
+    font-size:16px;
+}
+
+.metric-card h2{
+    margin-top:10px;
+    color:#0F172A;
+    font-size:34px;
+    font-weight:700;
+}
+
+.dashboard-card{
+    background:white;
+    border-radius:18px;
+    padding:18px 25px;
+    margin-bottom:15px;
+    border:1px solid #E5E7EB;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.dashboard-card h2{
+    margin:0;
+    color:#0F172A;
+}
+
+.dashboard-card p{
+    margin-top:6px;
+    color:#64748B;
+}
+
+.metric-mini{
+    background:#F8FAFC;
+    border-radius:14px;
+    padding:15px;
+    border:1px solid #E5E7EB;
+}
+
+/* Main text */
+.stMarkdown,
+.stText {
+    color: white;
+}
+
+/* Headers */
+h1 {
+    color: #3B82F6;
+}
+
+h2 {
+    color: #60A5FA;
+}
+
+h3 {
+    color: #F8FAFC;
+}
+
+p {
+    color: #ffffff;
+}
+/* ==========================================
+   GLOBAL TEXT COLORS
+========================================== */
+
+/* All headings */
+h1, h2, h3, h4, h5, h6{
+    color:#FFFFFF !important;
+}
+
+/* Paragraphs */
+
+
+/* Labels */
+label{
+    color:#FFFFFF !important;
+}
+
+/* Markdown text */
+.stMarkdown{
+    color:#FFFFFF !important;
+}
+
+/* Normal text */
+.stText{
+    color:#FFFFFF !important;
+}
+
+/* Selectbox label */
+.stSelectbox label{
+    color:#FFFFFF !important;
+}
+
+/* Metric labels */
+[data-testid="stMetricLabel"]{
+    color:#FFFFFF !important;
+}
+
+/* Metric values */
+[data-testid="stMetricValue"]{
+    color:#FFFFFF !important;
+}
+
+/* Success/Warning/Info text */
+[data-testid="stAlert"]{
+    color:#FFFFFF !important;
+}
+
+/* DataFrame headers */
+thead th{
+    color:#FFFFFF !important;
+}
+
+/* DataFrame cells */
+tbody td{
+    color:#FFFFFF !important;
+}

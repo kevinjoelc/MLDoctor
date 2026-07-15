@@ -1,237 +1,297 @@
 # 🩺 MLDoctor
 
-MLDoctor is an open-source Python package that automatically analyzes datasets before machine learning. It helps identify common data quality issues and provides preprocessing recommendations to improve model performance.
+> AI-Powered Dataset Diagnostic System built with Streamlit
+
+MLDoctor is an intelligent web application that analyzes CSV datasets and provides detailed insights into data quality, preprocessing requirements, visualization, machine learning recommendations, and automated PDF reporting.
 
 ---
 
-## 🚀 Features
+# 📸 Project Preview
 
-- ✅ Missing Value Detection
-- ✅ Duplicate Row Detection
-- ✅ Data Type Analysis
-- ✅ Correlation Analysis
-- ✅ Outlier Detection (IQR Method)
-- ✅ Automatic Dataset Recommendations
-- ✅ JSON Report Generation
-- ✅ Easy-to-use Python API
+<img src="dashboard/assets/logo.png" width="120">
 
 ---
 
-## 📦 Installation
+# ✨ Features
 
-Clone the repository and install locally:
-
-```bash
-git clone https://github.com/yourusername/mldoctor.git
-cd mldoctor
-
-pip install -e .
-```
-
-Or after publishing on PyPI:
-
-```bash
-pip install mldoctor
-```
+## 📊 Dataset Health Analysis
+- Total rows and columns
+- Dataset health score
+- Missing value detection
+- Duplicate detection
+- Numeric & categorical feature count
+- Memory usage analysis
 
 ---
 
-## 📖 Usage
+## 🩹 Missing Value Analysis
 
-```python
-import pandas as pd
-from mldoctor import analyze
-
-# Load dataset
-df = pd.read_csv("employee.csv")
-
-# Analyze dataset
-report = analyze(df)
-
-# Print report
-print(report)
-
-# Save report
-report.save_json("report.json")
-```
-
----
-
-## 📊 Example Output
-
-```json
-{
-  "shape": [1000, 15],
-
-  "missing": {
-      "total_missing": 25,
-      "columns_missing": {
-          "Age": 10,
-          "Salary": 15
-      }
-  },
-
-  "duplicates": {
-      "duplicates": 4
-  },
-
-  "datatypes": {
-      "numeric_columns": [
-          "Age",
-          "Salary"
-      ]
-  },
-
-  "recommendations": [
-      "Dataset contains missing values.",
-      "Duplicate rows detected."
-  ]
-}
-```
-
----
-
-## 📁 Project Structure
-
-```
-mldoctor/
-│
-├── mldoctor/
-│   ├── __init__.py
-│   ├── analyzer.py
-│   ├── missing.py
-│   ├── duplicates.py
-│   ├── datatype.py
-│   ├── correlation.py
-│   ├── outliers.py
-│   ├── imbalance.py
-│   ├── recommendations.py
-│   ├── report.py
-│   └── utils.py
-│
-├── examples/
-│   ├── test_missing.py
-│   └── test_analyze.py
-│
-├── tests/
-│
-├── README.md
-├── LICENSE
-├── requirements.txt
-└── pyproject.toml
-```
-
----
-
-## 🧠 What MLDoctor Checks
-
-### Missing Values
-- Total missing values
-- Missing values per column
+- Missing value count
 - Missing percentage
+- AI preprocessing suggestions
+- Interactive visualizations
 
-### Duplicate Rows
-- Total duplicate rows
-- Duplicate row records
+---
 
-### Data Types
-- Numeric columns
-- Categorical columns
-- Datatype summary
+## 📈 Outlier Detection
 
-### Correlation
-- Correlation matrix
-- Highly correlated feature pairs
-
-### Outliers
 - IQR-based outlier detection
-- Lower and upper limits
-- Outlier count
+- Outlier percentage
+- Boxplot visualization
+- AI recommendations
 
-### Recommendations
+---
+
+## 🔗 Correlation Analysis
+
+- Correlation heatmap
+- Highly correlated feature detection
+- Correlation matrix
+- Feature relationship analysis
+
+---
+
+## 🤖 AI Model Recommendation
+
+Automatically detects whether the problem is:
+
+- Classification
+- Regression
+
+Then recommends suitable machine learning algorithms.
+
+Examples:
+
+Classification
+
+- Logistic Regression
+- Random Forest
+- XGBoost
+- Support Vector Machine
+- Naive Bayes
+
+Regression
+
+- Linear Regression
+- Random Forest Regressor
+- XGBoost Regressor
+- Decision Tree
+- Support Vector Regression (SVR)
+
+---
+
+## 🚀 AutoML
+
+Automatically prepares datasets for machine learning.
+
+Includes:
+
 - Missing value handling
 - Duplicate removal
-- Feature correlation suggestions
-- Outlier handling recommendations
+- Feature encoding
+- Feature scaling
+- Train/Test Split
 
 ---
 
-## 📌 Example
+## 📊 Interactive Visualizations
 
-```python
-from mldoctor import analyze
+Supports multiple chart types:
 
-report = analyze(df)
+- Histogram
+- Scatter Plot
+- Line Chart
+- Box Plot
+- Correlation Heatmap
+- Pie Chart
+- Bar Chart
 
-print(report)
+Users can interactively choose dataset columns.
 
-report.save_json("report.json")
+---
+
+## 📄 Professional PDF Report
+
+Generate a complete analysis report containing:
+
+- Cover Page
+- Dataset Summary
+- Column Information
+- Numeric Statistics
+- Missing Value Analysis
+- Outlier Analysis
+- Correlation Analysis
+- AI Recommendations
+- Dataset Visualizations
+
+---
+
+# 🖥️ Tech Stack
+
+Frontend
+
+- Streamlit
+
+Backend
+
+- Python
+
+Libraries
+
+- Pandas
+- NumPy
+- Plotly
+- Matplotlib
+- Seaborn
+- Scikit-Learn
+- ReportLab
+
+---
+
+# 📂 Project Structure
+
+```
+MLDoctor/
+│
+├── dashboard/
+│   ├── assets/
+│   │    ├── logo.png
+│   │    └── style.css
+│   │
+│   ├── pages/
+│   │    ├── 1_Dataset_Health.py
+│   │    ├── 2_Missing_Values.py
+│   │    ├── 3_Outliers.py
+│   │    ├── 4_Correlation.py
+│   │    ├── 5_Recommendations.py
+│   │    ├── 6_Model_Recommendation.py
+│   │    ├── 7_AutoML.py
+│   │    ├── 8_Export_Report.py
+│   │    └── Visualizations.py
+│   │
+│   └── Home.py
+│
+├── report_assets/
+├── reports/
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
-## 🛠 Built With
+# ⚙️ Installation
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Matplotlib
+Clone the repository
 
----
+```bash
+git clone https://github.com/yourusername/MLDoctor.git
+```
 
-## 📈 Roadmap
+Go inside the project
 
-### Version 0.2
-- Dataset Health Score
-- Better recommendations
+```bash
+cd MLDoctor
+```
 
-### Version 0.3
-- HTML report generation
-- Interactive charts
+Install dependencies
 
-### Version 0.4
-- Automatic preprocessing pipeline
-- Missing value imputation suggestions
+```bash
+pip install -r requirements.txt
+```
 
-### Version 0.5
-- Command Line Interface (CLI)
+Run the application
 
-### Version 1.0
-- Complete dataset profiling
-- One-command dataset diagnosis
-- PDF and HTML reports
-- Feature importance suggestions
+```bash
+streamlit run dashboard/Home.py
+```
 
 ---
 
-## 🤝 Contributing
+# 📦 Required Packages
 
-Contributions are welcome!
-
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Open a Pull Request
+```text
+streamlit
+pandas
+numpy
+plotly
+matplotlib
+seaborn
+scikit-learn
+reportlab
+openpyxl
+```
 
 ---
 
-## 📄 License
+# 🎯 Workflow
 
-This project is licensed under the MIT License.
+```text
+Upload Dataset
+        │
+        ▼
+Dataset Health Analysis
+        │
+        ▼
+Missing Value Analysis
+        │
+        ▼
+Outlier Detection
+        │
+        ▼
+Correlation Analysis
+        │
+        ▼
+Model Recommendation
+        │
+        ▼
+AutoML
+        │
+        ▼
+Interactive Visualizations
+        │
+        ▼
+Generate Professional PDF Report
+```
 
 ---
 
-## 👨‍💻 Author
+# 📊 Supported Dataset Format
+
+- CSV (.csv)
+
+Example datasets:
+
+- Healthcare
+- Finance
+- Sales
+- Marketing
+- Student Performance
+- Vehicle Dataset
+- Weather Dataset
+
+---
+
+# 🚀 Future Improvements
+
+- SQL Database Support
+- Excel Dataset Support
+- AI Chat Assistant
+- Feature Importance Analysis
+- SHAP Explainability
+- Hyperparameter Optimization
+- Deep Learning Models
+- Cloud Deployment
+
+---
+
+# 👨‍💻 Author
 
 **Kevin Joel**
 
-AI & Machine Learning Student
-
-GitHub: https://github.com/yourusername
-
-LinkedIn: https://linkedin.com/in/yourprofile
+Artificial Intelligence & Machine Learning Student
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub!
+# 📜 License
+
+This project is intended for educational and academic purposes.

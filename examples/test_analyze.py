@@ -1,9 +1,12 @@
 import pandas as pd
 from mldoctor import analyze
 
-df = pd.read_csv("/Users/kevinjoel/MODEL/Datasets/fiat500.csv")
+df = pd.read_csv("/Users/kevinjoel/MODEL/Datasets/titanic.csv")
 
-report = analyze(df)
+report = analyze(
+    df,
+    target="Survived"
+)
 
 print(report)
 

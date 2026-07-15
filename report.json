@@ -1,0 +1,367 @@
+{
+    "shape": [
+        891,
+        12
+    ],
+    "missing": {
+        "total_missing": 866,
+        "columns_missing": {
+            "Age": 177,
+            "Cabin": 687,
+            "Embarked": 2
+        },
+        "missing_percentage": {
+            "Age": 19.87,
+            "Cabin": 77.1,
+            "Embarked": 0.22
+        }
+    },
+    "duplicates": {
+        "duplicates": 0,
+        "duplicate_rows": []
+    },
+    "datatypes": {
+        "datatypes": {
+            "PassengerId": "int64",
+            "Survived": "int64",
+            "Pclass": "int64",
+            "Name": "str",
+            "Sex": "str",
+            "Age": "float64",
+            "SibSp": "int64",
+            "Parch": "int64",
+            "Ticket": "str",
+            "Fare": "float64",
+            "Cabin": "str",
+            "Embarked": "str"
+        },
+        "numeric_columns": [
+            "PassengerId",
+            "Survived",
+            "Pclass",
+            "Age",
+            "SibSp",
+            "Parch",
+            "Fare"
+        ],
+        "categorical_columns": [
+            "Name",
+            "Sex",
+            "Ticket",
+            "Cabin",
+            "Embarked"
+        ]
+    },
+    "correlation": {
+        "high_correlation_pairs": [],
+        "correlation_matrix": {
+            "PassengerId": {
+                "PassengerId": 1.0,
+                "Survived": -0.005,
+                "Pclass": -0.035,
+                "Age": 0.037,
+                "SibSp": -0.058,
+                "Parch": -0.002,
+                "Fare": 0.013
+            },
+            "Survived": {
+                "PassengerId": -0.005,
+                "Survived": 1.0,
+                "Pclass": -0.338,
+                "Age": -0.077,
+                "SibSp": -0.035,
+                "Parch": 0.082,
+                "Fare": 0.257
+            },
+            "Pclass": {
+                "PassengerId": -0.035,
+                "Survived": -0.338,
+                "Pclass": 1.0,
+                "Age": -0.369,
+                "SibSp": 0.083,
+                "Parch": 0.018,
+                "Fare": -0.549
+            },
+            "Age": {
+                "PassengerId": 0.037,
+                "Survived": -0.077,
+                "Pclass": -0.369,
+                "Age": 1.0,
+                "SibSp": -0.308,
+                "Parch": -0.189,
+                "Fare": 0.096
+            },
+            "SibSp": {
+                "PassengerId": -0.058,
+                "Survived": -0.035,
+                "Pclass": 0.083,
+                "Age": -0.308,
+                "SibSp": 1.0,
+                "Parch": 0.415,
+                "Fare": 0.16
+            },
+            "Parch": {
+                "PassengerId": -0.002,
+                "Survived": 0.082,
+                "Pclass": 0.018,
+                "Age": -0.189,
+                "SibSp": 0.415,
+                "Parch": 1.0,
+                "Fare": 0.216
+            },
+            "Fare": {
+                "PassengerId": 0.013,
+                "Survived": 0.257,
+                "Pclass": -0.549,
+                "Age": 0.096,
+                "SibSp": 0.16,
+                "Parch": 0.216,
+                "Fare": 1.0
+            }
+        }
+    },
+    "outliers": {
+        "PassengerId": {
+            "outliers": 0,
+            "lower_limit": -444.0,
+            "upper_limit": 1336.0
+        },
+        "Survived": {
+            "outliers": 0,
+            "lower_limit": -1.5,
+            "upper_limit": 2.5
+        },
+        "Pclass": {
+            "outliers": 0,
+            "lower_limit": 0.5,
+            "upper_limit": 4.5
+        },
+        "Age": {
+            "outliers": 11,
+            "lower_limit": -6.69,
+            "upper_limit": 64.81
+        },
+        "SibSp": {
+            "outliers": 46,
+            "lower_limit": -1.5,
+            "upper_limit": 2.5
+        },
+        "Parch": {
+            "outliers": 213,
+            "lower_limit": 0.0,
+            "upper_limit": 0.0
+        },
+        "Fare": {
+            "outliers": 116,
+            "lower_limit": -26.72,
+            "upper_limit": 65.63
+        }
+    },
+    "recommendations": [
+        "'Age' has 19.87% missing values. Median imputation is recommended.",
+        "'Cabin' has 77.1% missing values. Consider dropping this column.",
+        "'Embarked' has 0.22% missing values. Mean/Mode imputation is recommended.",
+        "\u2705 No duplicate rows found.",
+        "\u2705 No highly correlated features detected.",
+        "'Age' has 11 outliers. Review these values before training.",
+        "'SibSp' has 46 outliers. RobustScaler or IQR filtering may help.",
+        "'Parch' has 213 outliers. Investigate this feature before model training.",
+        "'Fare' has 116 outliers. Investigate this feature before model training."
+    ],
+    "health": {
+        "score": 61,
+        "status": "Fair",
+        "color": "darkorange"
+    },
+    "column_health": [
+        {
+            "column": "PassengerId",
+            "score": 100,
+            "status": "Excellent",
+            "issues": "None"
+        },
+        {
+            "column": "Survived",
+            "score": 100,
+            "status": "Excellent",
+            "issues": "None"
+        },
+        {
+            "column": "Pclass",
+            "score": 100,
+            "status": "Excellent",
+            "issues": "None"
+        },
+        {
+            "column": "Name",
+            "score": 90,
+            "status": "Excellent",
+            "issues": "Categorical"
+        },
+        {
+            "column": "Sex",
+            "score": 90,
+            "status": "Excellent",
+            "issues": "Categorical"
+        },
+        {
+            "column": "Age",
+            "score": 90,
+            "status": "Excellent",
+            "issues": "Few Missing"
+        },
+        {
+            "column": "SibSp",
+            "score": 85,
+            "status": "Good",
+            "issues": "Outliers"
+        },
+        {
+            "column": "Parch",
+            "score": 70,
+            "status": "Fair",
+            "issues": "Many Outliers"
+        },
+        {
+            "column": "Ticket",
+            "score": 90,
+            "status": "Excellent",
+            "issues": "Categorical"
+        },
+        {
+            "column": "Fare",
+            "score": 70,
+            "status": "Fair",
+            "issues": "Many Outliers"
+        },
+        {
+            "column": "Cabin",
+            "score": 40,
+            "status": "Poor",
+            "issues": "High Missing, Categorical"
+        },
+        {
+            "column": "Embarked",
+            "score": 80,
+            "status": "Good",
+            "issues": "Few Missing, Categorical"
+        }
+    ],
+    "feature_types": {
+        "PassengerId": [
+            "ID Column",
+            "Numeric"
+        ],
+        "Survived": [
+            "Numeric"
+        ],
+        "Pclass": [
+            "Numeric"
+        ],
+        "Name": [
+            "ID Column",
+            "Categorical"
+        ],
+        "Sex": [
+            "Categorical"
+        ],
+        "Age": [
+            "Numeric"
+        ],
+        "SibSp": [
+            "Numeric"
+        ],
+        "Parch": [
+            "Numeric"
+        ],
+        "Ticket": [
+            "Categorical"
+        ],
+        "Fare": [
+            "Numeric"
+        ],
+        "Cabin": [
+            "Categorical"
+        ],
+        "Embarked": [
+            "Categorical"
+        ]
+    },
+    "preprocessing_plan": [
+        {
+            "column": "Age",
+            "action": "Median Imputation",
+            "reason": "19.87% missing values"
+        },
+        {
+            "column": "Cabin",
+            "action": "Drop Column",
+            "reason": "77.1% missing values"
+        },
+        {
+            "column": "Embarked",
+            "action": "Mean/Mode Imputation",
+            "reason": "0.22% missing values"
+        },
+        {
+            "column": "Age",
+            "action": "Review Outliers / Use RobustScaler",
+            "reason": "11 outliers"
+        },
+        {
+            "column": "SibSp",
+            "action": "Review Outliers / Use RobustScaler",
+            "reason": "46 outliers"
+        },
+        {
+            "column": "Parch",
+            "action": "Review Outliers / Use RobustScaler",
+            "reason": "213 outliers"
+        },
+        {
+            "column": "Fare",
+            "action": "Review Outliers / Use RobustScaler",
+            "reason": "116 outliers"
+        },
+        {
+            "column": "Name",
+            "action": "Encode Categorical Feature",
+            "reason": "Required before most ML models"
+        },
+        {
+            "column": "Sex",
+            "action": "Encode Categorical Feature",
+            "reason": "Required before most ML models"
+        },
+        {
+            "column": "Ticket",
+            "action": "Encode Categorical Feature",
+            "reason": "Required before most ML models"
+        },
+        {
+            "column": "Cabin",
+            "action": "Encode Categorical Feature",
+            "reason": "Required before most ML models"
+        },
+        {
+            "column": "Embarked",
+            "action": "Encode Categorical Feature",
+            "reason": "Required before most ML models"
+        }
+    ],
+    "model_recommendation": {
+        "task": "Classification",
+        "recommended_models": [
+            "Random Forest",
+            "XGBoost",
+            "Logistic Regression",
+            "Support Vector Machine",
+            "LightGBM"
+        ],
+        "reason": "Recommendations based on detected prediction task."
+    },
+    "ml_readiness": {
+        "score": 51,
+        "status": "Needs preprocessing"
+    }
+}

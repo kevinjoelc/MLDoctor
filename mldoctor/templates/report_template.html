@@ -5,69 +5,1057 @@
 
     <style>
         body{
-            font-family:Arial;
+            font-family:Arial, sans-serif;
             background:#f4f4f4;
             margin:40px;
         }
 
         .card{
             background:white;
-            padding:20px;
-            border-radius:10px;
-            margin-bottom:20px;
-            box-shadow:0px 2px 8px rgba(0,0,0,0.15);
+            padding:25px;
+            border-radius:12px;
+            margin-bottom:25px;
+            box-shadow:0 2px 10px rgba(0,0,0,.15);
         }
 
         h1{
             color:#2c3e50;
         }
 
+        h2{
+            color:#34495e;
+            margin-bottom:15px;
+        }
+
         pre{
             white-space:pre-wrap;
             font-size:14px;
+        }
+
+        .health{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .score{
+            flex:1;
+            text-align:center;
+        }
+
+        .score h1{
+            font-size:72px;
+            margin:0;
+        }
+
+        .details{
+            flex:1;
+            padding-left:30px;
+        }
+        .card img{
+    width:100%;
+    height:320px;
+    object-fit:contain;
+    border-radius:10px;
+}
+    </style>
+
+</head>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const score = document.querySelector("[data-color]");
+    if (score) {
+        score.style.color = score.dataset.color;
+    }
+});
+</script>
+
+<body>
+
+<h1 style="text-align:center;">
+🩺 MLDoctor Dataset Report
+</h1>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;">
+
+<div class="card">
+
+<h2>📊 Dataset Health Score</h2>
+
+<div class="health">
+
+<div class="score">
+
+<h1
+    data-color="{{ report['health']['color'] }}"
+    style="font-size:70px; margin:0;">
+    {{ report["health"]["score"] }}/100
+</h1>
+<h3>{{ report["health"]["status"] }}</h3>
+
+</div>
+
+<div class="details">
+
+
+<p><b>Dataset quality is evaluated using:</b></p>
+
+<ul>
+<li>✔ Missing Values</li>
+<li>✔ Duplicate Rows</li>
+<li>✔ Feature Correlation</li>
+<li>✔ Outliers</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🚀 Machine Learning Readiness</h2>
+
+<div style="text-align:center;">
+
+<h1 style="font-size:60px;color:#3498db;">
+
+{{ report["ml_readiness"]["score"] }}/100
+
+</h1>
+
+<h3>
+
+{{ report["ml_readiness"]["status"] }}
+
+</h3>
+
+</div>
+
+</div>
+
+<div class="card">
+<h2>Dataset Shape</h2>
+
+<p>
+Rows : {{ report["shape"][0] }}<br>
+Columns : {{ report["shape"][1] }}
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📊 Missing Values</h2>
+
+<img src="report_assets/missing.png">
+
+<p><b>Total Missing:</b> {{ report["missing"]["total_missing"] }}</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📄 Duplicate Rows</h2>
+
+{% if report["duplicates"]["duplicates"] == 0 %}
+
+<div style="
+background:#e8f5e9;
+padding:15px;
+border-left:6px solid green;
+border-radius:8px;">
+
+<h3 style="color:green;margin:0;">
+✅ No Duplicate Rows Found
+</h3>
+
+<p>
+Your dataset does not contain duplicate records.
+</p>
+
+</div>
+
+{% else %}
+
+<div style="
+background:#fff3cd;
+padding:15px;
+border-left:6px solid orange;
+border-radius:8px;">
+
+<h3 style="color:#b26a00;margin:0;">
+⚠ Duplicate Rows Detected
+</h3>
+
+<p>
+
+<b>Total Duplicate Rows:</b>
+
+{{ report["duplicates"]["duplicates"] }}
+
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<div class="card">
+
+<h2>📋 Datatypes</h2>
+
+<p>
+<b>Numeric Features:</b>
+{{ report["datatypes"]["numeric_columns"]|length }}
+&nbsp;&nbsp;&nbsp;
+
+<b>Categorical Features:</b>
+{{ report["datatypes"]["categorical_columns"]|length }}
+</p>
+
+<br>
+
+<table style="width:100%; border-collapse:collapse;">
+
+<tr style="background:#2c3e50; color:white;">
+    <th style="padding:10px;">Column</th>
+    <th style="padding:10px;">Datatype</th>
+    <th style="padding:10px;">Category</th>
+</tr>
+
+{% for column, dtype in report["datatypes"]["datatypes"].items() %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+<td style="padding:10px;">
+{{ column }}
+</td>
+
+<td style="padding:10px;">
+{{ dtype }}
+</td>
+
+<td style="padding:10px;">
+
+{% if column in report["datatypes"]["numeric_columns"] %}
+
+🔢 Numeric
+
+{% else %}
+
+🔤 Categorical
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>📋 Column Health</h2>
+
+<table style="width:100%; border-collapse:collapse;">
+
+<tr style="background:#f2f2f2;">
+    <th style="padding:10px;">Column</th>
+    <th>Score</th>
+    <th>Status</th>
+    <th>Issues</th>
+</tr>
+
+{% for item in report["column_health"] %}
+
+<tr>
+    <td style="padding:10px;">{{ item.column }}</td>
+    <td>{{ item.score }}/100</td>
+    <td>{{ item.status }}</td>
+    <td>{{ item.issues }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>📈 Histograms</h2>
+
+<img src="report_assets/histograms.png">
+
+</div>
+<div class="card">
+
+<h2>📈 Correlation Heatmap</h2>
+
+<img src="report_assets/correlation.png">
+
+{% if report["correlation"]["high_correlation_pairs"] %}
+
+<h3>Highly Correlated Features</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+
+<tr>
+<th>Column 1</th>
+<th>Column 2</th>
+<th>Correlation</th>
+</tr>
+
+{% for pair in report["correlation"]["high_correlation_pairs"] %}
+<tr>
+<td>{{ pair["column_1"] }}</td>
+<td>{{ pair["column_2"] }}</td>
+<td>{{ pair["correlation"] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p style="color:green;">✅ No highly correlated features found.</p>
+
+{% endif %}
+
+</div>
+
+
+<div class="card">
+
+<h2>📦 Boxplots</h2>
+
+<img src="report_assets/boxplots.png">
+
+</div>
+
+
+<div class="card">
+
+
+<h2>📦 Outlier Analysis</h2>
+
+<table style="width:100%; border-collapse:collapse;">
+
+<tr style="background:#2c3e50; color:white;">
+    <th style="padding:10px;">Column</th>
+    <th>Outliers</th>
+    <th>Lower Limit</th>
+    <th>Upper Limit</th>
+    <th>Status</th>
+</tr>
+
+{% for column, info in report["outliers"].items() %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+    <td style="padding:10px;">
+        {{ column }}
+    </td>
+
+    <td style="text-align:center;">
+        {{ info["outliers"] }}
+    </td>
+
+    <td style="text-align:center;">
+        {{ info["lower_limit"] }}
+    </td>
+
+    <td style="text-align:center;">
+        {{ info["upper_limit"] }}
+    </td>
+
+    <td style="text-align:center;">
+
+        {% if info["outliers"] == 0 %}
+            🟢 None
+        {% elif info["outliers"] < 20 %}
+            🟢 Low
+        {% elif info["outliers"] < 100 %}
+            🟠 Medium
+        {% else %}
+            🔴 High
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+<div class="card">
+
+<h2>🤖 Recommended Machine Learning Models</h2>
+
+<p>
+<b>Prediction Task:</b>
+{{ report["model_recommendation"]["task"] }}
+</p>
+
+<table style="width:100%;border-collapse:collapse;">
+
+<tr style="background:#2c3e50;color:white;">
+    <th style="padding:10px;">Rank</th>
+    <th>Model</th>
+</tr>
+
+{% for model in report["model_recommendation"]["recommended_models"] %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+<td style="padding:10px;">
+{{ loop.index }}
+</td>
+
+<td>
+{{ model }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+<div class="card">
+
+<h2>🛠 Recommended Preprocessing Steps</h2>
+
+<table style="width:100%;border-collapse:collapse;">
+
+<tr style="background:#2c3e50;color:white;">
+<th style="padding:10px;">Column</th>
+<th>Action</th>
+<th>Reason</th>
+</tr>
+
+{% for item in report["preprocessing_plan"] %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+<td style="padding:10px;">
+{{ item.column }}
+</td>
+
+<td>
+{{ item.action }}
+</td>
+
+<td>
+{{ item.reason }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+<div class="card">
+
+<h2>📌 Executive Summary</h2>
+
+<ul>
+
+<li>
+<b>Dataset Size:</b>
+{{ report["shape"][0] }} rows × {{ report["shape"][1] }} columns
+</li>
+
+<li>
+<b>Health Score:</b>
+{{ report["health"]["score"] }}/100
+({{ report["health"]["status"] }})
+</li>
+
+<li>
+<b>ML Readiness:</b>
+{{ report["ml_readiness"]["score"] }}/100
+({{ report["ml_readiness"]["status"] }})
+</li>
+
+<li>
+<b>Missing Values:</b>
+{{ report["missing"]["total_missing"] }}
+</li>
+
+<li>
+<b>Duplicate Rows:</b>
+{{ report["duplicates"]["duplicates"] }}
+</li>
+
+<li>
+<b>Highly Correlated Features:</b>
+{{ report["correlation"]["high_correlation_pairs"]|length }}
+</li>
+
+<li>
+<b>Columns Requiring Preprocessing:</b>
+{{ report["preprocessing_plan"]|length }}
+</li>
+
+<li>
+<b>Recommended Task:</b>
+{{ report["model_recommendation"]["task"] }}
+</li>
+
+</ul>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MLDoctor Report</title>
+
+    <style>
+        body{
+            font-family:Arial, sans-serif;
+            background:#f4f4f4;
+            margin:40px;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:12px;
+            margin-bottom:25px;
+            box-shadow:0 2px 10px rgba(0,0,0,.15);
+        }
+
+        h1{
+            color:#2c3e50;
+        }
+
+        h2{
+            color:#34495e;
+            margin-bottom:15px;
+        }
+
+        pre{
+            white-space:pre-wrap;
+            font-size:14px;
+        }
+
+        .health{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .score{
+            flex:1;
+            text-align:center;
+        }
+
+        .score h1{
+            font-size:72px;
+            margin:0;
+        }
+
+        .details{
+            flex:1;
+            padding-left:30px;
+        }
+        .card img{
+            width:100%;
+            height:420px;
+            object-fit:contain;
+            border-radius:10px;
+        }
+        .card{
+            overflow-x:auto;
         }
     </style>
 
 </head>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const score = document.querySelector("[data-color]");
+    if (score) {
+        score.style.color = score.dataset.color;
+    }
+});
+</script>
+
 <body>
 
-<h1>🩺 MLDoctor Dataset Report</h1>
+<h1 style="text-align:center;">
+🩺 MLDoctor Dataset Report
+</h1>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;">
+
+<div class="card">
+
+<h2>📊 Dataset Health Score</h2>
+
+<div class="health">
+
+<div class="score">
+
+<h1
+    data-color="{{ report['health']['color'] }}"
+    style="font-size:70px; margin:0;">
+    {{ report["health"]["score"] }}/100
+</h1>
+<h3>{{ report["health"]["status"] }}</h3>
+
+</div>
+
+<div class="details">
+
+
+<p><b>Dataset quality is evaluated using:</b></p>
+
+<ul>
+<li>✔ Missing Values</li>
+<li>✔ Duplicate Rows</li>
+<li>✔ Feature Correlation</li>
+<li>✔ Outliers</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🚀 Machine Learning Readiness</h2>
+
+<div style="text-align:center;">
+
+<h1 style="font-size:60px;color:#3498db;">
+
+{{ report["ml_readiness"]["score"] }}/100
+
+</h1>
+
+<h3>
+
+{{ report["ml_readiness"]["status"] }}
+
+</h3>
+
+</div>
+
+</div>
 
 <div class="card">
 <h2>Dataset Shape</h2>
+
 <p>
 Rows : {{ report["shape"][0] }}<br>
 Columns : {{ report["shape"][1] }}
 </p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📊 Missing Values</h2>
+
+<img src="report_assets/missing.png">
+
+<p><b>Total Missing:</b> {{ report["missing"]["total_missing"] }}</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📄 Duplicate Rows</h2>
+
+{% if report["duplicates"]["duplicates"] == 0 %}
+
+<div style="
+background:#e8f5e9;
+padding:15px;
+border-left:6px solid green;
+border-radius:8px;">
+
+<h3 style="color:green;margin:0;">
+✅ No Duplicate Rows Found
+</h3>
+
+<p>
+Your dataset does not contain duplicate records.
+</p>
+
+</div>
+
+{% else %}
+
+<div style="
+background:#fff3cd;
+padding:15px;
+border-left:6px solid orange;
+border-radius:8px;">
+
+<h3 style="color:#b26a00;margin:0;">
+⚠ Duplicate Rows Detected
+</h3>
+
+<p>
+
+<b>Total Duplicate Rows:</b>
+
+{{ report["duplicates"]["duplicates"] }}
+
+</p>
+
+</div>
+
+{% endif %}
+
 </div>
 
 <div class="card">
-<h2>Missing Values</h2>
-<pre>{{ report["missing"] }}</pre>
+
+<h2>📋 Datatypes</h2>
+
+<p>
+<b>Numeric Features:</b>
+{{ report["datatypes"]["numeric_columns"]|length }}
+&nbsp;&nbsp;&nbsp;
+
+<b>Categorical Features:</b>
+{{ report["datatypes"]["categorical_columns"]|length }}
+</p>
+
+<br>
+
+<table style="width:100%; border-collapse:collapse;">
+
+<tr style="background:#2c3e50; color:white;">
+    <th style="padding:10px;">Column</th>
+    <th style="padding:10px;">Datatype</th>
+    <th style="padding:10px;">Category</th>
+</tr>
+
+{% for column, dtype in report["datatypes"]["datatypes"].items() %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+<td style="padding:10px;">
+{{ column }}
+</td>
+
+<td style="padding:10px;">
+{{ dtype }}
+</td>
+
+<td style="padding:10px;">
+
+{% if column in report["datatypes"]["numeric_columns"] %}
+
+🔢 Numeric
+
+{% else %}
+
+🔤 Categorical
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
 </div>
 
 <div class="card">
-<h2>Duplicates</h2>
-<pre>{{ report["duplicates"] }}</pre>
+
+<h2>📋 Column Health</h2>
+
+<table style="width:100%; border-collapse:collapse;">
+
+<tr style="background:#f2f2f2;">
+    <th style="padding:10px;">Column</th>
+    <th>Score</th>
+    <th>Status</th>
+    <th>Issues</th>
+</tr>
+
+{% for item in report["column_health"] %}
+
+<tr>
+    <td style="padding:10px;">{{ item.column }}</td>
+    <td>{{ item.score }}/100</td>
+    <td>{{ item.status }}</td>
+    <td>{{ item.issues }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
 </div>
 
 <div class="card">
-<h2>Datatypes</h2>
-<pre>{{ report["datatypes"] }}</pre>
+
+<h2>📈 Histograms</h2>
+
+<img src="report_assets/histograms.png">
+
+</div>
+<div class="card">
+
+<h2>📈 Correlation Heatmap</h2>
+
+<img src="report_assets/correlation.png">
+
+{% if report["correlation"]["high_correlation_pairs"] %}
+
+<h3>Highly Correlated Features</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+
+<tr>
+<th>Column 1</th>
+<th>Column 2</th>
+<th>Correlation</th>
+</tr>
+
+{% for pair in report["correlation"]["high_correlation_pairs"] %}
+<tr>
+<td>{{ pair["column_1"] }}</td>
+<td>{{ pair["column_2"] }}</td>
+<td>{{ pair["correlation"] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p style="color:green;">✅ No highly correlated features found.</p>
+
+{% endif %}
+
 </div>
 
-<div class="card">
-<h2>Correlation</h2>
-<pre>{{ report["correlation"] }}</pre>
-</div>
 
 <div class="card">
-<h2>Outliers</h2>
-<pre>{{ report["outliers"] }}</pre>
+
+<h2>📦 Boxplots</h2>
+
+<img src="report_assets/boxplots.png">
+
 </div>
 
+
 <div class="card">
+
+<div class="card">
+
+
+<h2>📦 Outlier Analysis</h2>
+
+<table style="width:100%; border-collapse:collapse;">
+
+<tr style="background:#2c3e50; color:white;">
+    <th style="padding:10px;">Column</th>
+    <th>Outliers</th>
+    <th>Lower Limit</th>
+    <th>Upper Limit</th>
+    <th>Status</th>
+</tr>
+
+{% for column, info in report["outliers"].items() %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+    <td style="padding:10px;">
+        {{ column }}
+    </td>
+
+    <td style="text-align:center;">
+        {{ info["outliers"] }}
+    </td>
+
+    <td style="text-align:center;">
+        {{ info["lower_limit"] }}
+    </td>
+
+    <td style="text-align:center;">
+        {{ info["upper_limit"] }}
+    </td>
+
+    <td style="text-align:center;">
+
+        {% if info["outliers"] == 0 %}
+            🟢 None
+        {% elif info["outliers"] < 20 %}
+            🟢 Low
+        {% elif info["outliers"] < 100 %}
+            🟠 Medium
+        {% else %}
+            🔴 High
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+<div class="card">
+
+<h2>🤖 Recommended Machine Learning Models</h2>
+
+<p>
+<b>Prediction Task:</b>
+{{ report["model_recommendation"]["task"] }}
+</p>
+
+<table style="width:100%;border-collapse:collapse;">
+
+<tr style="background:#2c3e50;color:white;">
+    <th style="padding:10px;">Rank</th>
+    <th>Model</th>
+</tr>
+
+{% for model in report["model_recommendation"]["recommended_models"] %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+<td style="padding:10px;">
+{{ loop.index }}
+</td>
+
+<td>
+{{ model }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+<div class="card">
+
+<h2>🛠 Recommended Preprocessing Steps</h2>
+
+<table style="width:100%;border-collapse:collapse;">
+
+<tr style="background:#2c3e50;color:white;">
+<th style="padding:10px;">Column</th>
+<th>Action</th>
+<th>Reason</th>
+</tr>
+
+{% for item in report["preprocessing_plan"] %}
+
+<tr style="border-bottom:1px solid #ddd;">
+
+<td style="padding:10px;">
+{{ item.column }}
+</td>
+
+<td>
+{{ item.action }}
+</td>
+
+<td>
+{{ item.reason }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+<div class="card">
+
+<h2>📌 Executive Summary</h2>
+
+<ul>
+
+<li>
+<b>Dataset Size:</b>
+{{ report["shape"][0] }} rows × {{ report["shape"][1] }} columns
+</li>
+
+<li>
+<b>Health Score:</b>
+{{ report["health"]["score"] }}/100
+({{ report["health"]["status"] }})
+</li>
+
+<li>
+<b>ML Readiness:</b>
+{{ report["ml_readiness"]["score"] }}/100
+({{ report["ml_readiness"]["status"] }})
+</li>
+
+<li>
+<b>Missing Values:</b>
+{{ report["missing"]["total_missing"] }}
+</li>
+
+<li>
+<b>Duplicate Rows:</b>
+{{ report["duplicates"]["duplicates"] }}
+</li>
+
+<li>
+<b>Highly Correlated Features:</b>
+{{ report["correlation"]["high_correlation_pairs"]|length }}
+</li>
+
+<li>
+<b>Columns Requiring Preprocessing:</b>
+{{ report["preprocessing_plan"]|length }}
+</li>
+
+<li>
+<b>Recommended Task:</b>
+{{ report["model_recommendation"]["task"] }}
+</li>
+
+</ul>
+
+</div>
 <h2>Recommendations</h2>
 
 <ul>
@@ -77,6 +1065,42 @@ Columns : {{ report["shape"][1] }}
 </ul>
 
 </div>
+
+<hr>
+
+<div style="text-align:center;color:gray;padding:20px;">
+
+Generated by
+
+<b>MLDoctor v0.4.0</b>
+
+<br><br>
+
+Dataset Analysis • ML Readiness • Visualization • Preprocessing Guidance
+
+</div>
+
+
+
+</body>
+</html>
+
+
+<hr>
+
+<div style="text-align:center;color:gray;padding:20px;">
+
+Generated by
+
+<b>MLDoctor v0.4.0</b>
+
+<br><br>
+
+Dataset Analysis • ML Readiness • Visualization • Preprocessing Guidance
+<
+</div>
+
+
 
 </body>
 </html>
