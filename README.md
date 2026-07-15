@@ -1,3 +1,4 @@
+
 # 🩺 MLDoctor
 
 > AI-Powered Dataset Diagnostic System built with Streamlit
@@ -7,12 +8,12 @@ MLDoctor is an intelligent web application that analyzes CSV datasets and provid
 ---
 
 # 📸 Project Preview
-
-<img src="dashboard/assets/logo.png" width="120">
+<img width="1470" height="834" alt="home" src="https://github.com/user-attachments/assets/5c7f0e6f-82b9-458a-9f45-d29d6ef3f95c" />
 
 ---
 
 # ✨ Features
+<img width="1470" height="834" alt="dh2" src="https://github.com/user-attachments/assets/d2408ae6-013b-4356-9b63-0516c5b3206d" />
 
 ## 📊 Dataset Health Analysis
 - Total rows and columns
@@ -25,6 +26,7 @@ MLDoctor is an intelligent web application that analyzes CSV datasets and provid
 ---
 
 ## 🩹 Missing Value Analysis
+<img width="1470" height="836" alt="mv3" src="https://github.com/user-attachments/assets/dd9cb7ce-7987-4fc1-bd28-2e37d01ee193" />
 
 - Missing value count
 - Missing percentage
@@ -34,6 +36,7 @@ MLDoctor is an intelligent web application that analyzes CSV datasets and provid
 ---
 
 ## 📈 Outlier Detection
+<img width="1470" height="836" alt="out4" src="https://github.com/user-attachments/assets/04643ddf-c5de-4c75-81aa-f690d094309e" />
 
 - IQR-based outlier detection
 - Outlier percentage
@@ -43,6 +46,7 @@ MLDoctor is an intelligent web application that analyzes CSV datasets and provid
 ---
 
 ## 🔗 Correlation Analysis
+<img width="1470" height="836" alt="cor4" src="https://github.com/user-attachments/assets/c9482653-795f-485e-9096-78a824137965" />
 
 - Correlation heatmap
 - Highly correlated feature detection
@@ -52,6 +56,7 @@ MLDoctor is an intelligent web application that analyzes CSV datasets and provid
 ---
 
 ## 🤖 AI Model Recommendation
+<img width="1470" height="833" alt="aimod6" src="https://github.com/user-attachments/assets/6e477b3c-3844-41ae-ad1a-b2c030a14509" />
 
 Automatically detects whether the problem is:
 
@@ -81,6 +86,7 @@ Regression
 ---
 
 ## 🚀 AutoML
+<img width="1470" height="835" alt="autoMl7" src="https://github.com/user-attachments/assets/8380a1cb-67d7-4aac-b78d-010010730634" />
 
 Automatically prepares datasets for machine learning.
 
@@ -95,6 +101,7 @@ Includes:
 ---
 
 ## 📊 Interactive Visualizations
+<img width="1470" height="835" alt="vis9" src="https://github.com/user-attachments/assets/e0b8f59f-f831-4994-a5cc-a8801e0c9abd" />
 
 Supports multiple chart types:
 
@@ -111,6 +118,7 @@ Users can interactively choose dataset columns.
 ---
 
 ## 📄 Professional PDF Report
+<img width="1470" height="836" alt="exp8" src="https://github.com/user-attachments/assets/925f1ef6-9ea6-42a6-a2c1-2a1ddacbeffd" />
 
 Generate a complete analysis report containing:
 
